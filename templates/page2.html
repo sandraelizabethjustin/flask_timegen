@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>how to upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='page2.css') }}">
+</head>
+<body>
+    <div class="head">
+        <div class="container">
+            <h1>HOW TO UPLOAD FILES<a href="/" class="home-link">HOME</a></h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="inst">
+        <h2>Here are some instructions on how to upload the files</h2>
+        <ul>
+            <li>The first Excel file to be uploaded is a partially filled excel file.Each row represents a class, with lab hours and courses offered by other departments already fixed.</li>
+            <li>The second excel file to be uploaded is a Course-teacher mapped file.It has 2 columns and the first row should contain course and faculty as its values.The other rows can have course name and faculty name as its values.</li>
+            <li>The third excel file to be uploaded is a Course-hour mapped file.It has 2 columns and the first row should contain course and hour as its values.The other rows can have course name and number of hours required for that course per week as its values.</li>
+            <li>If you have any query related to uploading the input excel files please do refer the following sample excel files.</li>
+          </ul>
+        </div>
+        <h2>Download Sample Excel Files</h2>
+        <div class="downloads">
+            <ul>
+                <li><a href="/downloads/ti7.xlsx" download>Download Partially filled Timetable</a></li>
+                <li><a href="/downloads/hrs7.xlsx" download>Download Sample Faculty Course Mapping File</a></li>
+                <li><a href="/downloads/c7.xlsx" download>Download Sample Course Hour Mapping File</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

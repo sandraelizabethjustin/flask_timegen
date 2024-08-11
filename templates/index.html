@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIMEGEN</title>
+  <link rel="stylesheet" href="static/main.css">
+</head>
+<body>
+
+  <div class="topnav" id="myTopnav">
+    <a href="#home" class="active">TIMEGEN</a>
+    <div class="topnav-right">
+      <a href="#about">ABOUT</a>
+      <a href="#generate">GENERATE</a>
+      <a href="/page2.html">HOW TO UPLOAD</a>
+      <a href="#contact">CONTACT</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+  <div class="about" id="about" style="background-image: url('Screenshot(134).png');background-size: cover;">
+    <h3 class="center1">TIMEGEN</h3>
+    <div class="desc1">
+      <p>Welcome to our Automated Timetable Generator! </p><p>Streamline your scheduling process with our intuitive platform designed to effortlessly create timetables for various purposes. Whether you're organizing classes, events, or meetings, our tool simplifies the intricate task of timetable creation.</p>
+    </div>
+    </div>
+
+
+  <div class="generate" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Computer_keyboard.png/640px-Computer_keyboard.png'); background-size: cover;" id="generate">
+    <div class="gen_container">
+      <h1>TIMETABLE GENERATOR</h1>
+
+      <form action="/view" method="post" enctype="multipart/form-data">
+          <h2>Upload files</h2>
+          <label for="file1">Partially filled Excel File:</label>
+          <input type="file" id="file1" name="file1" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"><br><br>
+          
+          <label for="file2">course-teacher mapped File</label>
+          <input type="file" id="file2" name="file2" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"><br><br>
+          
+          <label for="file3">course-hour mapped File</label>
+          <input type="file" id="file3" name="file3" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"><br><br>
+          
+          <h2>Generate and Download Timetable</h2>
+          <button type="submit">Generate and Download</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="contact" id="contact" style="background-color: #f2f2f2;">
+    <div class="contact_container">
+      <h3 class="center">CONTACT</h3>
+      <p class="center">Let's get in touch. Send us a message:</p>
+        <div class="row">
+          <div class="column">
+          <p><i class="fa fa-map-marker"></i>India</p>
+          <p><i class="fa fa-phone"></i> Phone: +91 6525761121</p>
+          <p><i class="fa fa-envelope"></i> Email: timegen23@gmail.com</p>
+          </div>
+        </div>
+    </div>
+  </div>
+  <footer class="center footer">
+    <a href="#home" onclick="topFunction()">To the top</a>
+  </footer>
+  <script>
+    // JavaScript for responsive navigation menu
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+    
+    // JavaScript for smooth scrolling to the top of the page
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+</body>
+</html>

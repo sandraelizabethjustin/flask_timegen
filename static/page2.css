@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.head {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+}
+
+.home-link {
+    margin-left: auto;
+    text-decoration: none;
+    color: white;
+}
+
+h2 {
+    text-align: center;
+}
+
+.downloads ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.downloads li {
+    margin-bottom: 10px;
+}
+
+.downloads a {
+    text-decoration: none;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.downloads a:hover {
+    background-color: #ddd;
+}
