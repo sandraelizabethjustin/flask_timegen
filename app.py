@@ -1,11 +1,10 @@
-#final code as on 16 july
+
 from flask import Flask, render_template, request,send_file
 from flask import Flask, send_from_directory
 import pandas as pd
 import random
 import xlsxwriter
 import openpyxl
-import io
 
 classes=[]
 app = Flask(__name__)
@@ -69,10 +68,6 @@ def view():
     sheet_obj = wb_obj.active 
     cell_obj1 = str(sheet_obj.cell(row=1, column=1).value)
     cell_obj2 =str( sheet_obj.cell(row=2, column=1).value)
-
-     # Create an in-memory output file for the new Excel file
-    output = io.BytesIO()
-    wb = xlsxwriter.Workbook(output, {'in_memory': True})
     
     #s1=pd.read_excel("Course_teacher_map.xlsx")
     wb = xlsxwriter.Workbook('static/final.xlsx')
@@ -298,11 +293,6 @@ def view():
     #print(teachslot)
     wb.close()
 
-     # Rewind the buffer
-    output.seek(0)
-
-    # Send the file as an attachment
-    return send_file(output, as_attachment=True, download_name="final.xlsx", mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
     # tf=pd.DataFrame(timetable,index=['','monday','tuesday','wednesday','thursday','friday']*t_len,columns=['1st','2nd','3rd','Lunch','4th','5th','6th'])
     # #tf.to_excel("static/tf7.xlsx")
@@ -314,7 +304,7 @@ def view():
     # with pd.ExcelWriter("static/final.xlsx") as writer:
     #     tf.to_excel(writer,sheet_name="Timetable")
     #     tc.to_excel(writer,sheet_name="Teacher Slots")#ts
-    #return send_file("static/final.xlsx", as_attachment=True)
+    return send_file("static/final.xlsx", as_attachment=True)
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
