@@ -1,10 +1,10 @@
+#final code as on 16 july
 from flask import Flask, render_template, request,send_file
 from flask import Flask, send_from_directory
 import pandas as pd
-import random
+import os
 import xlsxwriter
 import openpyxl
-
 classes=[]
 app = Flask(__name__)
 TOTAL_HRS=7
@@ -19,7 +19,6 @@ def populate_teacher(s):
     for k in range(length):
         if str(s.iat[k,1]).lower()!='nan':
             class_ind[s.iat[k,0]]=s.iat[k,1].split(',')
-            #class_ind.append(list((s.iat[k,0],s.iat[k,1])))
         else:
             classes.append(str(s.iat[k,0]))
     
@@ -50,14 +49,19 @@ def page2():
 
 @app.route('/downloads/<path:filename>')
 def download_file(filename):
+    file_path = os.path.join('/tmp', filename)
     
-    return send_file('static/' + filename, as_attachment=True)
+    # return send_file('static/' + filename, as_attachment=True)
+    if os.path.exists(file_path):
+        return send_file(file_path, as_attachment=True)
+    else:
+        return "File not found", 404
 
 
 @app.route('/view', methods=['POST'])
 def view():
+    print("POST request received at /view")
     files = [request.files[f'file{i}'] for i in range(1, 4)]
-   # file1.save(file1.filename)
     s2=pd.read_excel(files[0],skiprows=2)
     s1=pd.read_excel(files[1])
     s3=pd.read_excel(files[2])
@@ -68,8 +72,8 @@ def view():
     cell_obj1 = str(sheet_obj.cell(row=1, column=1).value)
     cell_obj2 =str( sheet_obj.cell(row=2, column=1).value)
     
-    #s1=pd.read_excel("Course_teacher_map.xlsx")
-    wb = xlsxwriter.Workbook('static/final.xlsx')
+    excel_path = os.path.join('/tmp', 'final.xlsx')
+    wb = xlsxwriter.Workbook(excel_path)
     ws = wb.add_worksheet("TimeTable")
     ws2=wb.add_worksheet("TeacherSlot")
     f2= wb.add_format({'bold':True,'bg_color':'#b2b2b2'})
@@ -92,18 +96,11 @@ def view():
             for i in a:
                 tt.append(i)
     teachers=list(set(tt))
-    print(teachers)
 
     teacher_course=populate_teacher(s1)
-    print(teacher_course)
     teacher_len=len(teachers)
-
-    #s2=pd.read_excel("ti.xlsx")
     t_len=len(s2)
-    print(t_len)
-    #s3=pd.read_excel("course_hour_map.xlsx")
     course_hour=populate(s3)
-    print(course_hour)
     timeslot=[[0]*MAX_SIZE for i in range(t_len)]
     teacherslot=[[0]*MAX_SIZE for i in range(teacher_len)]
 
@@ -235,7 +232,6 @@ def view():
         else:
             ws.write_row(counter+1,0,['','1st','2nd','3rd','Lunch','4th','5th','6th'],f4)
         for row in range(len(temp)):
-        # ws2.write_row(counter+row,1,['1st','2nd','3rd','Lunch','4th','5th','6th'],f2)
             if row%2==0:
                 ws.write(counter + row+2, 0, working_days[row],f6)
             else:
@@ -277,7 +273,6 @@ def view():
         else:
             ws2.write_row(counter+1,0,['','1st','2nd','3rd','Lunch','4th','5th','6th'],f4)
         for row in range(len(temp)):
-        # ws2.write_row(counter+row,1,['1st','2nd','3rd','Lunch','4th','5th','6th'],f2)
             if row%2==0:
                 ws2.write(counter + row+2, 0, working_days[row],f6)
             else:
@@ -289,21 +284,10 @@ def view():
                     ws2.write(counter + row+2, col + 1, value,f3)
         counter+=8
         k=k+1
-    #print(teachslot)
+  
     wb.close()
 
-
-    # tf=pd.DataFrame(timetable,index=['','monday','tuesday','wednesday','thursday','friday']*t_len,columns=['1st','2nd','3rd','Lunch','4th','5th','6th'])
-    # #tf.to_excel("static/tf7.xlsx")
-    # #return send_file("static/tf7.xlsx", as_attachment=True)
-    # tc=pd.DataFrame(teachslot,index=['FACULTY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY']*teacher_len,columns=['1st','2nd','3rd','Lunch','4th','5th','6th'])
-    # #tc.to_excel("static/tc3.xlsx")
-    # #return send_file("static/tc3.xlsx", as_attachment=True)
-    # #return send_file("static/tf7.xlsx", as_attachment=True), send_file("static/tc3.xlsx", as_attachment=True)
-    # with pd.ExcelWriter("static/final.xlsx") as writer:
-    #     tf.to_excel(writer,sheet_name="Timetable")
-    #     tc.to_excel(writer,sheet_name="Teacher Slots")#ts
-    return send_file("static/final.xlsx", as_attachment=True)
-
+    # return send_file("static/final.xlsx", as_attachment=True)
+    return send_file(excel_path, as_attachment=True)
 # if __name__ == '__main__':
 #     app.run(debug=True)
