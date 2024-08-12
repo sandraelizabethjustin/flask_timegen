@@ -62,9 +62,19 @@ def view():
     s2=pd.read_excel(files[0],skiprows=2)
     s1=pd.read_excel(files[1])
     s3=pd.read_excel(files[2])
+
+    #files = [request.files[f'file{i}'] for i in range(1, 4)]
+    for file in files:
+        if file:
+            print(f"Received file: {file.filename}")
+        else:
+            print("File not received")
+
     
-    path = files[0] 
-    wb_obj = openpyxl.load_workbook(path)   
+    #path = files[0] 
+    path = '/tmp/final.xlsx'
+    wb_obj = xlsxwriter.Workbook(path)
+    #wb_obj = openpyxl.load_workbook(path)   
     sheet_obj = wb_obj.active 
     cell_obj1 = str(sheet_obj.cell(row=1, column=1).value)
     cell_obj2 =str( sheet_obj.cell(row=2, column=1).value)
@@ -304,7 +314,8 @@ def view():
     # with pd.ExcelWriter("static/final.xlsx") as writer:
     #     tf.to_excel(writer,sheet_name="Timetable")
     #     tc.to_excel(writer,sheet_name="Teacher Slots")#ts
-    return send_file("static/final.xlsx", as_attachment=True)
+    #return send_file("static/final.xlsx", as_attachment=True)
+    return send_file(path, as_attachment=True)
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
