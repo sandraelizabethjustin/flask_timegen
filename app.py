@@ -49,19 +49,19 @@ def page2():
 
 @app.route('/downloads/<path:filename>')
 def download_file(filename):
-    file_path = safe_join('static', filename)  # Assuming files are in the 'static' directory
+    # file_path = safe_join('static', filename)  # Assuming files are in the 'static' directory
 
-    if os.path.exists(file_path):
-        return send_file(file_path, as_attachment=True)
-    else:
-        return abort(404, description="File not found")
-    # file_path = os.path.join('/tmp', filename)
-    
-    # # return send_file('static/' + filename, as_attachment=True)
     # if os.path.exists(file_path):
     #     return send_file(file_path, as_attachment=True)
     # else:
-    #     return "File not found", 404
+    #     return abort(404, description="File not found")
+    file_path = os.path.join('/static', filename)
+    
+    # return send_file('static/' + filename, as_attachment=True)
+    if os.path.exists(file_path):
+        return send_file(file_path, as_attachment=True)
+    else:
+        return "File not found", 404
 
 
 @app.route('/view', methods=['POST'])
