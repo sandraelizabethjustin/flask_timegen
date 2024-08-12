@@ -46,22 +46,46 @@ def page2():
 
 @app.route('/view', methods=['POST'])
 def view():
+
+ try:
     files = [request.files[f'file{i}'] for i in range(1, 4)]
-    
+    # Verify if all files are uploaded
+    for file in files:
+        if not file:
+            return "One of the files was not uploaded. Please try again.", 400
+        
     s2 = pd.read_excel(files[0], skiprows=2)
     s1 = pd.read_excel(files[1])
     s3 = pd.read_excel(files[2])
-    
-    path = files[0]
-    wb_obj = openpyxl.load_workbook(path)   
+        
+    wb_obj = openpyxl.load_workbook(files[0])
     sheet_obj = wb_obj.active 
     cell_obj1 = str(sheet_obj.cell(row=1, column=1).value)
     cell_obj2 = str(sheet_obj.cell(row=2, column=1).value)
-    
+        
     output_path = '/tmp/final.xlsx'  # Save to /tmp directory
     wb = xlsxwriter.Workbook(output_path)
     ws = wb.add_worksheet("TimeTable")
     ws2 = wb.add_worksheet("TeacherSlot")
+        
+
+
+    #files = [request.files[f'file{i}'] for i in range(1, 4)]
+    
+    # s2 = pd.read_excel(files[0], skiprows=2)
+    # s1 = pd.read_excel(files[1])
+    # s3 = pd.read_excel(files[2])
+    
+    # path = files[0]
+    # wb_obj = openpyxl.load_workbook(path)   
+    # sheet_obj = wb_obj.active 
+    # cell_obj1 = str(sheet_obj.cell(row=1, column=1).value)
+    # cell_obj2 = str(sheet_obj.cell(row=2, column=1).value)
+    
+    # output_path = '/tmp/final.xlsx'  # Save to /tmp directory
+    # wb = xlsxwriter.Workbook(output_path)
+    # ws = wb.add_worksheet("TimeTable")
+    # ws2 = wb.add_worksheet("TeacherSlot")
     
     f2 = wb.add_format({'bold': True, 'bg_color': '#b2b2b2'})
     f3 = wb.add_format({'bg_color': '#808080'})
@@ -220,9 +244,14 @@ def view():
                 ws2.write(counter + row + 2, col + 1, value, f5 if row % 2 == 0 else f3)
         counter += 8
         k += 1
+        wb.close()
 
-    wb.close()
-    return send_file(output_path, as_attachment=True)
+        return send_file(output_path, as_attachment=True)
+
+ except Exception as e:
+    return f"An error occurred: {str(e)}", 500
+    # wb.close()
+    # return send_file(output_path, as_attachment=True)
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
