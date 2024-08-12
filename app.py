@@ -1,5 +1,5 @@
 #final code as on 16 july
-from flask import Flask, render_template, request,send_file
+from flask import Flask, render_template, request,send_file,safe_join, abort
 from flask import Flask, send_from_directory
 import pandas as pd
 import os
@@ -49,13 +49,19 @@ def page2():
 
 @app.route('/downloads/<path:filename>')
 def download_file(filename):
-    file_path = os.path.join('/tmp', filename)
-    
-    # return send_file('static/' + filename, as_attachment=True)
+    file_path = safe_join('static', filename)  # Assuming files are in the 'static' directory
+
     if os.path.exists(file_path):
         return send_file(file_path, as_attachment=True)
     else:
-        return "File not found", 404
+        return abort(404, description="File not found")
+    # file_path = os.path.join('/tmp', filename)
+    
+    # # return send_file('static/' + filename, as_attachment=True)
+    # if os.path.exists(file_path):
+    #     return send_file(file_path, as_attachment=True)
+    # else:
+    #     return "File not found", 404
 
 
 @app.route('/view', methods=['POST'])
