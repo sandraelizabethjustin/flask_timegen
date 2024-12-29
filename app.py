@@ -49,7 +49,7 @@ def page2():
 
 @app.route('/downloads/<path:filename>')
 def download_file(filename):
-    # file_path = safe_join('static', filename)  # Assuming files are in the 'static' directory
+    # file_path = safe_join('static', filename)  
 
     # if os.path.exists(file_path):
     #     return send_file(file_path, as_attachment=True)
@@ -251,7 +251,7 @@ def view():
         counter+=8
         k=k+1
         
-   # print(timetable)
+   
 
     k=0
     teachslot=[]
@@ -293,7 +293,6 @@ def view():
   
     wb.close()
 
-    # return send_file("static/final.xlsx", as_attachment=True)
+    
     return send_file(excel_path, as_attachment=True)
-# if __name__ == '__main__':
-#     app.run(debug=True)
+
