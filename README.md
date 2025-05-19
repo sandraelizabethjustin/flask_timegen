@@ -79,15 +79,15 @@ You’ll need to provide the following Excel sheets:
 ### 🔹 Generated Timetable
 ![Timetable](screenshots/timetable.png)
 
-## 🧪 Testing
+<!--## 🧪 Testing
 
 - **Unit Testing:** Python functions tested for slot allocation logic
 - **Black Box Testing:** Verified inputs and generated output correctness
-- **Integration Testing:** End-to-end flow from upload → generation → download
+- **Integration Testing:** End-to-end flow from upload → generation → download-->
 
 ## 🧑‍💻 Authors
 
-Developed by a team of final-year CSE students at RIT Kottayam:
+Developed by a team of four CSE students at RIT Kottayam:
 
 - [Malavika S](mailto:example@example.com)
 - [Minnu Shaji](mailto:example@example.com)
