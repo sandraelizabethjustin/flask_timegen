@@ -17,8 +17,7 @@ This project was developed as part of our **B.Tech Mini Project** at **Rajiv Gan
 - 📥 Upload Excel sheets for:
   - Course-Faculty Mapping
   - Course-Hour Requirements
-  - Partially Filled Timetable (if any)
-- ⚙️ Intelligent timetable optimization algorithm
+  - Partially Filled Timetable        <!-- ⚙️ Intelligent timetable optimization algorithm-->
 - 🔄 Avoids same-subject consecutive sessions
 - 🧑‍🏫 Generates individual teacher-wise timetables
 - 📤 Export the final timetable to Excel
@@ -36,13 +35,13 @@ This project was developed as part of our **B.Tech Mini Project** at **Rajiv Gan
 
 ## 📂 Folder Structure
 
-flask_timegen/
+<!--flask_timegen/
 ├── app.py # Main Flask application
 ├── templates/ # HTML files
 ├── static/ # CSS files
 ├── uploads/ # Uploaded Excel sheets
 ├── outputs/ # Generated timetable Excel files
-└── README.md # Project documentation
+└── README.md # Project documentation -->
 ## 🧠 How It Works
 
 1. Upload three Excel files:
@@ -99,14 +98,13 @@ Developed by a team of final-year CSE students at RIT Kottayam:
 
 This project is for academic and learning purposes. Free to use under the MIT License.
 
----
 
-//## 💡 Future Improvements
+<!--## 💡 Future Improvements
 
-//- Faculty-specific constraints (e.g. no classes on Friday afternoons)
-//- Tutorial and elective handling
-//- Admin login and database integration
-//- Mobile-responsive interface
+- Faculty-specific constraints (e.g. no classes on Friday afternoons)
+- Tutorial and elective handling
+- Admin login and database integration
+- Mobile-responsive interface-->
 
 ## 🌟 Support
 
