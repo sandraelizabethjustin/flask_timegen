@@ -33,9 +33,9 @@ This project was developed as part of our **B.Tech Mini Project** at **Rajiv Gan
 | **HTML/CSS** | Frontend design |
 | **MS Excel** | Input/Output format |
 
-## 📂 Folder Structure
+<!--## 📂 Folder Structure
 
-<!--flask_timegen/
+flask_timegen/
 ├── app.py # Main Flask application
 ├── templates/ # HTML files
 ├── static/ # CSS files
