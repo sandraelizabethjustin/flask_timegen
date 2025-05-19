@@ -71,13 +71,13 @@ You’ll need to provide the following Excel sheets:
 ## 🖼️ Screenshots
 
 ### 🔹 Home Page
-![Home Page](Downloads/home.jpeg)
+![Home Page](home.jpeg)
 
 ### 🔹 Upload Excel Files
-![Upload](Downloads/how to upload.jpeg)
+![Upload](how to upload.jpeg)
 
 ### 🔹 Generated Timetable
-![Timetable](C:\Users\HP\Pictures\Screenshots\generated_timetable.png)
+![Timetable](generated_timetable.png)
 
 <!--## 🧪 Testing
 
