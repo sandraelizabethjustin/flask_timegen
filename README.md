@@ -71,13 +71,13 @@ You’ll need to provide the following Excel sheets:
 ## 🖼️ Screenshots
 
 ### 🔹 Home Page
-![Home Page](screenshots/home.png)
+![Home Page](Downloads/home.jpeg)
 
 ### 🔹 Upload Excel Files
-![Upload](screenshots/upload.png)
+![Upload](Downloads/how to upload.jpeg)
 
 ### 🔹 Generated Timetable
-![Timetable](screenshots/timetable.png)
+![Timetable](C:\Users\HP\Pictures\Screenshots\generated_timetable.png)
 
 <!--## 🧪 Testing
 
@@ -89,9 +89,9 @@ You’ll need to provide the following Excel sheets:
 
 Developed by a team of four CSE students at RIT Kottayam:
 
-- [Malavika S](mailto:example@example.com)
-- [Minnu Shaji](mailto:example@example.com)
-- [P Lakshmi Priya](mailto:example@example.com)
+- [Malavika S](https://github.com/MalavikaS2002)
+- [Minnu Shaji](https://github.com/Minnu-shaji)
+- [P Lakshmi Priya](https://github.com/Lakshmi086)
 - [Sandra Elizabeth Justin](https://github.com/sandraelizabethjustin)
 
 ## 📄 License
