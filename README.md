@@ -74,7 +74,7 @@ You’ll need to provide the following Excel sheets:
 ![Home Page](home.jpeg)
 
 ### 🔹 Upload Excel Files
-![Upload](how to upload.jpeg)
+![Upload](howtoupload.jpeg)
 
 ### 🔹 Generated Timetable
 ![Timetable](generated_timetable.png)
